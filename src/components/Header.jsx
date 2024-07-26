@@ -5,7 +5,7 @@ import ProfileIcon from "../assets/profile_icon.svg?react";
 const Header = () => {
   return (
     <TitleHeader>
-      <h1>Twingle</h1>
+      <h1>PHOCKET</h1>
       <ProfileIcon />
     </TitleHeader>
   );
