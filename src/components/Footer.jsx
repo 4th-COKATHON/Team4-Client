@@ -35,6 +35,7 @@ const NavigationBar = styled.nav`
     display: flex;
     width: 100%;
     height: 80px;
+    background-color: white;
     position: fixed;
     bottom: 0;
 `
