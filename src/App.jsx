@@ -6,10 +6,12 @@ import Post from "./pages/Post/Post";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
+import BucketBox from "./componets/BucketBox";
 
 const App = () => {
   return (
     <div>
+      <BucketBox />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/history/*" element={<History />} />
