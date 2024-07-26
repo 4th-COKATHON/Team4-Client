@@ -1,11 +1,24 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import styled from "styled-components";
 import CheckIcon from "../assets/check_icon.svg?react";
+import calulateDueDate from "../utils/calculateDueDate";
 
-// eslint-disable-next-line react/prop-types
-const BucketBox = ({ imageUrl, title, checked, handleAdd }) => {
+const BucketBox = ({
+  imageUrl,
+  title,
+  category,
+  checked,
+  handleAdd,
+  dueDate,
+}) => {
   return (
     <BoxWrapper>
+      {dueDate && (
+        <DueDateIcon>
+          <span>D-{calulateDueDate(dueDate)}</span>
+        </DueDateIcon>
+      )}
       <img
         src={
           imageUrl ||
@@ -13,10 +26,13 @@ const BucketBox = ({ imageUrl, title, checked, handleAdd }) => {
         }
       />
       <Description>
-        <span className="title">{title || "제목"}</span>
+        <span>
+          <span className="title">{title || "제목"}</span>
+          <span className="category">{category || "카테고리"}</span>
+        </span>
         <Icons>
           {checked && <CheckIcon />}
-          <span onClick={handleAdd}>+</span>
+          {handleAdd && <span onClick={handleAdd}>+</span>}
         </Icons>
       </Description>
     </BoxWrapper>
@@ -24,8 +40,9 @@ const BucketBox = ({ imageUrl, title, checked, handleAdd }) => {
 };
 
 const BoxWrapper = styled.div`
-  width: 10rem;
-  height: 9.2rem;
+  position: relative;
+  width: 10.4rem;
+  height: 10.4rem;
   border-radius: 1rem;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
 
@@ -42,10 +59,23 @@ const Description = styled.div`
   padding: 0.2rem;
   margin: 0 0.6rem;
 
-  .title {
-    font-family: "Pretendard";
-    font-size: 1rem;
-    font-weight: 500;
+  > span {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+
+    .title {
+      font-family: "Pretendard";
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .category {
+      font-family: "Pretendard";
+      color: #8b8b8b;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
   }
 `;
 
@@ -55,6 +85,26 @@ const Icons = styled.span`
 
   > span {
     color: #a6a6a6;
+  }
+`;
+
+const DueDateIcon = styled.div`
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.4rem;
+  height: 1.2rem;
+  border-radius: 0.6rem;
+  background: #10c27b;
+
+  > span {
+    color: #fffbfb;
+    font-family: "Pretendard";
+    font-size: 0.75rem;
+    font-weight: 600;
   }
 `;
 
