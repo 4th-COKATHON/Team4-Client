@@ -48,6 +48,7 @@ const StyledNavLink = styled(NavLink)`
     flex-direction: column;
     text-decoration: none;
     text-align: center;
+    font-size: 10px;
     color: #000000;
     svg {
         padding: 4.57px;
