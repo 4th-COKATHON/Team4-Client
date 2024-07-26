@@ -8,6 +8,7 @@ import dayjs from "dayjs";
 const myBucketList = [
   { title: "여행 가기", dueDate: "2024-07-31" },
   { title: "책 읽기", dueDate: "2024-08-31" },
+  { title: "운동하기", dueDate: "2024-09-30" },
 ];
 
 const HomeSection2 = () => {
@@ -90,17 +91,18 @@ const ViewAll = styled.div`
 `;
 
 const BucketWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%;
   gap: 1.5rem;
-  margin: 1rem;
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
 `;
 
 const BucketBox = styled.div`
   display: flex;
   flex-direction: column;
-  width: 12rem;
+  width: 8rem;
   height: 4rem;
   padding: 1rem;
   gap: 0.4rem;
