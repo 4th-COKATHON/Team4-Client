@@ -3,7 +3,7 @@ import styled from "styled-components";
 import CheckIcon from "../assets/check_icon.svg?react";
 
 // eslint-disable-next-line react/prop-types
-const BucketBox = ({ imageUrl, title, checked, handleAdd }) => {
+const BucketBox = ({ imageUrl, title, category, checked, handleAdd }) => {
   return (
     <BoxWrapper>
       <img
@@ -13,7 +13,10 @@ const BucketBox = ({ imageUrl, title, checked, handleAdd }) => {
         }
       />
       <Description>
-        <span className="title">{title || "제목"}</span>
+        <span>
+          <span className="title">{title || "제목"}</span>
+          <span className="category">{category || "카테고리"}</span>
+        </span>
         <Icons>
           {checked && <CheckIcon />}
           <span onClick={handleAdd}>+</span>
@@ -24,8 +27,8 @@ const BucketBox = ({ imageUrl, title, checked, handleAdd }) => {
 };
 
 const BoxWrapper = styled.div`
-  width: 10rem;
-  height: 9.2rem;
+  width: 10.4rem;
+  height: 10.4rem;
   border-radius: 1rem;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
 
@@ -42,10 +45,23 @@ const Description = styled.div`
   padding: 0.2rem;
   margin: 0 0.6rem;
 
-  .title {
-    font-family: "Pretendard";
-    font-size: 1rem;
-    font-weight: 500;
+  > span {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+
+    .title {
+      font-family: "Pretendard";
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .category {
+      font-family: "Pretendard";
+      color: #8b8b8b;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
   }
 `;
 
