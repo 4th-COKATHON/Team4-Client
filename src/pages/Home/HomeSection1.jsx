@@ -52,13 +52,14 @@ const HomeSection1 = () => {
 
 const Wrapper = styled.div`
   position: relative;
+  padding: 0.6rem 1.2rem;
+  margin-bottom: 1rem;
 `;
 
 const TitleHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.6rem 1.2rem;
 
   > h1 {
     color: #10c27b;
@@ -69,9 +70,6 @@ const TitleHeader = styled.div`
 `;
 
 const Main = styled.div`
-  position: absolute;
-  top: 5rem;
-  left: 1.2rem;
   width: 14rem;
   display: flex;
   flex-direction: column;
