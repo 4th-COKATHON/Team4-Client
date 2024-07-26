@@ -7,10 +7,14 @@ import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import Footer from "./components/Footer";
+import BucketBox from "./componets/BucketBox";
+import styled from "styled-components";
+import Header from "./components/Header";
 
 const App = () => {
   return (
-    <div>
+    <Wrapper>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/history/*" element={<History />} />
@@ -20,8 +24,12 @@ const App = () => {
         <Route path="signup/*" element={<Signup />} />
       </Routes>
       <Footer />
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  max-width: 100vw;
+`;
 
 export default App;
