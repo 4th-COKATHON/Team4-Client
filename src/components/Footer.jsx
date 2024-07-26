@@ -56,6 +56,7 @@ const StyledNavLink = styled(NavLink)`
     svg {
       > path {
         fill: #10c27b;
+        stroke: #10c27b;
       }
     }
   }
