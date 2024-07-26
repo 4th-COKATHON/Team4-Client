@@ -35,7 +35,6 @@ const Post = () => {
       <TabsWrapper>
         <StyledTabs
           value={activeTab}
-          textColor="464646"
           onChange={() => setActiveTab((activeTab + 1) % 2)}
         >
           <Tab label="달성 중" />
@@ -51,6 +50,7 @@ const Post = () => {
                     title={bucket.content}
                     dueDate={bucket.dueDate}
                     category={getCategory(bucket.category)}
+                    imageUrl={bucket.image_url}
                   />
                 </div>
               );
@@ -62,6 +62,7 @@ const Post = () => {
                     title={bucket.content}
                     dueDate={bucket.dueDate}
                     category={getCategory(bucket.category)}
+                    imageUrl={bucket.image_url}
                   />
                 </div>
               );

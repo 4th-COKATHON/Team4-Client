@@ -2,18 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import StarCharacter from "../../assets/start_character.svg?react";
 import StartIcon from "../../assets/start_icon.svg?react";
-
 import { LinearProgress } from "@mui/material";
-
-const rate = 0.7;
+import useSWR from "swr";
+import fetcher from "../../utils/fetcher";
 
 const HomeSection1 = () => {
+  const { data: rate } = useSWR("/goals/finished-rate", fetcher);
   const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
-        if (oldProgress === rate * 100) {
+        // rate.result를 10의 자리수로 내림
+        const roundedRate = Math.floor(rate?.result / 10) * 10;
+        if (oldProgress === roundedRate) {
           return oldProgress;
         }
         return oldProgress + 10;
@@ -23,7 +25,7 @@ const HomeSection1 = () => {
     return () => {
       clearInterval(timer);
     };
-  }, []);
+  }, [rate]);
 
   return (
     <Wrapper>
@@ -32,7 +34,7 @@ const HomeSection1 = () => {
         <Progress>
           <ProgressDescription>
             <StartIcon />
-            <span>LV. 03 청린이</span>
+            <span>LV. {Math.floor(rate?.result / 10)} 청린이</span>
           </ProgressDescription>
           <StyledLinearProgress
             variant="determinate"

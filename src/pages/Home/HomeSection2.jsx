@@ -4,14 +4,18 @@ import BlinkStarIcon from "../../assets/star_blink_icon.svg?react";
 import StarIcon from "../../assets/start_icon.svg?react";
 import calulateDueDate from "../../utils/calculateDueDate";
 import dayjs from "dayjs";
+import useSWR from "swr";
+import fetcher from "../../utils/fetcher";
 
-const myBucketList = [
-  { title: "여행 가기", dueDate: "2024-07-31" },
-  { title: "책 읽기", dueDate: "2024-08-31" },
-  { title: "운동하기", dueDate: "2024-09-30" },
-];
+// const myBucketList = [
+//   { title: "여행 가기", dueDate: "2024-07-31" },
+//   { title: "책 읽기", dueDate: "2024-08-31" },
+//   { title: "운동하기", dueDate: "2024-09-30" },
+// ];
 
 const HomeSection2 = () => {
+  const { data: myBucketList } = useSWR("/goals", fetcher);
+
   const getDuaDateString = (dueDate) => {
     return dayjs(dueDate).format("YYYY.MM.DD");
   };
@@ -23,18 +27,18 @@ const HomeSection2 = () => {
           <BlinkStarIcon />
           <span>나의 버킷리스트</span>
         </HeaderTitle>
-        <ViewAll>
+        <ViewAll onClick={() => window.location.replace("/post")}>
           <span>전체 보기</span>
           <span className="arrow">&gt;</span>
         </ViewAll>
       </Header>
       <BucketWrapper>
-        {myBucketList.map((bucket, index) => (
+        {myBucketList?.result.goals.map((bucket, index) => (
           <BucketBox key={index}>
             <DueDateIcon>
-              <span>D-{calulateDueDate(bucket.dueDate)}</span>
+              <span>D-{calulateDueDate(bucket?.dueDate)}</span>
             </DueDateIcon>
-            <BucketTitle>{bucket.title}</BucketTitle>
+            <BucketTitle>{bucket?.content}</BucketTitle>
             <BucketDay>
               <StarIcon />
               <span>{getDuaDateString(bucket.dueDate)}</span>
@@ -103,7 +107,7 @@ const BucketBox = styled.div`
   display: flex;
   flex-direction: column;
   width: 8rem;
-  height: 4rem;
+  height: 4.8rem;
   padding: 1rem;
   gap: 0.4rem;
   border-radius: 1.125rem;
