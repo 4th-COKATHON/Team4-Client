@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import StarCharacter from "../../assets/start_character.svg?react";
 import StartIcon from "../../assets/start_icon.svg?react";
-import ProfileIcon from "../../assets/profile_icon.svg?react";
+
 import { LinearProgress } from "@mui/material";
 
 const rate = 0.7;
@@ -27,10 +27,6 @@ const HomeSection1 = () => {
 
   return (
     <Wrapper>
-      <TitleHeader>
-        <h1>Twingle</h1>
-        <ProfileIcon />
-      </TitleHeader>
       <Main>
         <h2>도전에 대한 두려움이 없을 때 그것은 청춘</h2>
         <Progress>
@@ -51,26 +47,14 @@ const HomeSection1 = () => {
 };
 
 const Wrapper = styled.div`
+  max-width: 100%;
   position: relative;
   padding: 0.6rem 1.2rem;
   margin-bottom: 1rem;
 `;
 
-const TitleHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  > h1 {
-    color: #10c27b;
-    font-family: Pretendard;
-    font-size: 2rem;
-    font-weight: 800;
-  }
-`;
-
 const Main = styled.div`
-  width: 14rem;
+  width: 12rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
