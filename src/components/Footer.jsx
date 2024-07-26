@@ -30,12 +30,13 @@ const Footer = () => {
 };
 
 const NavigationBar = styled.nav`
-  display: flex;
-  width: 100%;
-  height: 80px;
-  position: fixed;
-  bottom: 0;
-`;
+    display: flex;
+    width: 100%;
+    height: 80px;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+`
 
 const StyledNavLink = styled(NavLink)`
   display: flex;
