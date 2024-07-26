@@ -1,11 +1,24 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import styled from "styled-components";
 import CheckIcon from "../assets/check_icon.svg?react";
+import calulateDueDate from "../utils/calculateDueDate";
 
-// eslint-disable-next-line react/prop-types
-const BucketBox = ({ imageUrl, title, category, checked, handleAdd }) => {
+const BucketBox = ({
+  imageUrl,
+  title,
+  category,
+  checked,
+  handleAdd,
+  dueDate,
+}) => {
   return (
     <BoxWrapper>
+      {dueDate && (
+        <DueDateIcon>
+          <span>D-{calulateDueDate(dueDate)}</span>
+        </DueDateIcon>
+      )}
       <img
         src={
           imageUrl ||
@@ -27,6 +40,7 @@ const BucketBox = ({ imageUrl, title, category, checked, handleAdd }) => {
 };
 
 const BoxWrapper = styled.div`
+  position: relative;
   width: 10.4rem;
   height: 10.4rem;
   border-radius: 1rem;
@@ -71,6 +85,26 @@ const Icons = styled.span`
 
   > span {
     color: #a6a6a6;
+  }
+`;
+
+const DueDateIcon = styled.div`
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.4rem;
+  height: 1.2rem;
+  border-radius: 0.6rem;
+  background: #10c27b;
+
+  > span {
+    color: #fffbfb;
+    font-family: "Pretendard";
+    font-size: 0.75rem;
+    font-weight: 600;
   }
 `;
 
