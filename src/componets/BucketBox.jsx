@@ -19,7 +19,7 @@ const BucketBox = ({ imageUrl, title, category, checked, handleAdd }) => {
         </span>
         <Icons>
           {checked && <CheckIcon />}
-          <span onClick={handleAdd}>+</span>
+          {handleAdd && <span onClick={handleAdd}>+</span>}
         </Icons>
       </Description>
     </BoxWrapper>
